@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MenuButtonManager : MonoBehaviour
 {
-    public GameObject frame;
     [SerializeField]
     public int level;
 
