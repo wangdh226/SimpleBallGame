@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonManager : MonoBehaviour
+public class GameButtonManager : MonoBehaviour
 {
     public GameObject frame;
     public GameObject player;
