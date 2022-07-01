@@ -5,20 +5,33 @@ using UnityEngine.SceneManagement;
 
 public static class LevelManager 
 {
+    public static int currentLevel = 0;
+
     public enum Scene
     {
-       Scene0, Scene1, Scene2
-
+       LevelSelect, MainMenu
     }
 
+    // Used for selecting a specific 'special' scene
     public static void Load(Scene scene)
     {
         SceneManager.LoadScene(scene.ToString());
     }
 
-    public static void LoadNextLevel(int currentScene)
+    // Used for selecting a specific level
+    public static void Load(int levelNum)
     {
-        string nextScene = "Scene" + (currentScene + 1);
+        currentLevel = levelNum;
+        string nextScene = "Scene" + (currentLevel);
+        Debug.Log("Next level = " + nextScene);
+        SceneManager.LoadScene(nextScene);
+    }
+
+    // Used for loading the next level based on current level
+    public static void LoadNextLevel()
+    {
+        currentLevel++;
+        string nextScene = "Scene" + (currentLevel);
         Debug.Log("Next level = " + nextScene);
         SceneManager.LoadScene(nextScene);
     }

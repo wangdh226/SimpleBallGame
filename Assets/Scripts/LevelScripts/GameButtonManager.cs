@@ -9,8 +9,7 @@ public class GameButtonManager : MonoBehaviour
     public Canvas game;
     public Canvas options;
     public Canvas menu;
-    [SerializeField]
-    public int level;
+    public Canvas win;
 
     public UnityEngine.UI.Button CCWButton;
     public UnityEngine.UI.Button CWButton;
@@ -52,40 +51,47 @@ public class GameButtonManager : MonoBehaviour
         switch (index)
         {
             case 0:
+                //Debug.Log("Freeze");
                 (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
                 (frame.GetComponent("ConstantForce") as ConstantForce).enabled = false;
                 break;
             case 1:
+                //Debug.Log("Rotate CW");
                 (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
                 (frame.GetComponent("ConstantForce") as ConstantForce).enabled = true;
                 (frame.GetComponent("ConstantForce") as ConstantForce).relativeTorque = new Vector3(0.0f, 0.0f, -10.0f);
                 break;
             case 2:
+                //Debug.Log("Rotate CCW");
                 (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
                 (frame.GetComponent("ConstantForce") as ConstantForce).enabled = true;
                 (frame.GetComponent("ConstantForce") as ConstantForce).relativeTorque = new Vector3(0.0f, 0.0f, 10.0f);
                 break;
             case 3:
+                //Debug.Log("Open Menu");
                 OpenMenu();
                 break;
             case 4:
+                //Debug.Log("Open Options");
                 OpenOptions();
                 break;
             case 5:
+                //Debug.Log("Exit Menu/Options");
                 ExitMenu();
                 break;
             case 6:
+                //Debug.Log("Next level");
                 game.enabled = true;
                 options.enabled = false;
                 menu.enabled = false;
-                LevelManager.LoadNextLevel(level);
-                Debug.Log("Next level");
+                win.enabled = false;
+                LevelManager.LoadNextLevel();
                 break;
             case 7:
-                LevelManager.Load(LevelManager.Scene.Scene0);
-                Debug.Log("exit to Main Menu");
+                //Debug.Log("exit to Main Menu");
+                LevelManager.currentLevel = 0;
+                LevelManager.Load(LevelManager.Scene.MainMenu);
                 break;
-
         }
     }
 
