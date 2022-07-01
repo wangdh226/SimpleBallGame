@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 public static class LevelManager 
 {
     public static int currentLevel = 0;
-
+    public const int finalLevel = 5;
     public enum Scene
     {
-       LevelSelect, MainMenu
+       LevelSelect, MainMenu, EndScreen
     }
 
     // Used for selecting a specific 'special' scene
@@ -28,10 +28,20 @@ public static class LevelManager
     // Used for loading the next level based on current level
     public static void LoadNextLevel()
     {
-        currentLevel++;
-        string nextScene = "Scene" + (currentLevel);
-        Debug.Log("Next level = " + nextScene);
-        SceneManager.LoadScene(nextScene);
+        if(currentLevel >= finalLevel)
+        {
+            // is final level - go to end screen
+            Load(Scene.EndScreen);
+        } else
+        {
+            // not final level - go to next level
+            currentLevel++;
+            string nextScene = "Scene" + (currentLevel);
+            Debug.Log("Next level = " + nextScene);
+            SceneManager.LoadScene(nextScene);
+        }
+
+        
     }
 
 }

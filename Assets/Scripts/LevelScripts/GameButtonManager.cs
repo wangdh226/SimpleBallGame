@@ -76,11 +76,11 @@ public class GameButtonManager : MonoBehaviour
                 break;
             case 6:
                 //Debug.Log("Next level");
-                game.enabled = true;
+                LevelManager.LoadNextLevel();
                 options.enabled = false;
                 menu.enabled = false;
                 win.enabled = false;
-                LevelManager.LoadNextLevel();
+                game.enabled = true;
                 break;
             case 7:
                 //Debug.Log("exit to Main Menu");
