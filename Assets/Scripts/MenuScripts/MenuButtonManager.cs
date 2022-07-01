@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuButtonManager : MonoBehaviour
@@ -25,9 +23,6 @@ public class MenuButtonManager : MonoBehaviour
         exitMenuButton.onClick.AddListener(delegate { SwitchButtonHandler(3); });
         levelSelectButton.onClick.AddListener(delegate { SwitchButtonHandler(4); });
     }
-
-    // Update is called once per frame
-    void Update() { }
 
     void SwitchButtonHandler(int index)
     {

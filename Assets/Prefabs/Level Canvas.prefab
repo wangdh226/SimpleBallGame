@@ -1227,7 +1227,7 @@ MonoBehaviour:
   game: {fileID: 4769491296436643608}
   options: {fileID: 4769491295012388344}
   menu: {fileID: 4769491296190392356}
-  level: 1
+  win: {fileID: 4769491295743151691}
   CCWButton: {fileID: 4769491296205005338}
   CWButton: {fileID: 4769491295890854675}
   freezeButton: {fileID: 4769491296540009414}

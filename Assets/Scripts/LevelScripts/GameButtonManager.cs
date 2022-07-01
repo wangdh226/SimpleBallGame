@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameButtonManager : MonoBehaviour
@@ -42,9 +40,6 @@ public class GameButtonManager : MonoBehaviour
         nextLevelButton.onClick.AddListener(delegate { SwitchButtonHandler(6); });
         exitToMainMenuButton.onClick.AddListener(delegate { SwitchButtonHandler(7); });
     }
-
-    // Update is called once per frame
-    void Update() { }
 
     void SwitchButtonHandler(int index)
     {
