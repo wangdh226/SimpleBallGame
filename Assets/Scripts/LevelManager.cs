@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public static class LevelManager 
 {
-
     public enum Scene
     {
        Scene0, Scene1, Scene2
 
     }
-
 
     public static void Load(Scene scene)
     {
