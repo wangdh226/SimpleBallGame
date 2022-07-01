@@ -6,4 +6,14 @@ public class LevelSelectButtonManager : MonoBehaviour
     {
         LevelManager.Load(levelNum);
     }
+
+    public void back()
+    {
+        LevelManager.Load(LevelManager.Scene.MainMenu);
+    }
+
+    public void play()
+    {
+        LevelManager.Load(1);
+    }
 }
