@@ -21,7 +21,6 @@ public static class LevelManager
     {
         currentLevel = levelNum;
         string nextScene = "Scene" + (currentLevel);
-        Debug.Log("Next level = " + nextScene);
         SceneManager.LoadScene(nextScene);
     }
 
@@ -37,11 +36,7 @@ public static class LevelManager
             // not final level - go to next level
             currentLevel++;
             string nextScene = "Scene" + (currentLevel);
-            Debug.Log("Next level = " + nextScene);
             SceneManager.LoadScene(nextScene);
         }
-
-        
     }
-
 }
