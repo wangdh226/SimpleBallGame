@@ -27,6 +27,7 @@ public class GameButtonManager : MonoBehaviour
         game.enabled = true;
         options.enabled = false;
         menu.enabled = false;
+        win.enabled = false;
 
         freezeButton.onClick.AddListener(delegate { SwitchButtonHandler(0); });
         CWButton.onClick.AddListener(delegate { SwitchButtonHandler(1); });
