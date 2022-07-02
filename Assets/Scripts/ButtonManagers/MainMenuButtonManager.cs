@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MenuButtonManager : MonoBehaviour
+public class MainMenuButtonManager : MonoBehaviour
 {
     public Canvas mainMenu;
     public Canvas options;
