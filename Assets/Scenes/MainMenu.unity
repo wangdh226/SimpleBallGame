@@ -407,8 +407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f0b24936e3c8940866a92a3745a4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 0}
-  options: {fileID: 0}
+  mainMenu: {fileID: 674340527}
+  options: {fileID: 1230226648}
 --- !u!4 &92059120
 Transform:
   m_ObjectHideFlags: 0
