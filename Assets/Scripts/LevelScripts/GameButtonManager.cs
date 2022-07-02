@@ -4,22 +4,11 @@ public class GameButtonManager : MonoBehaviour
 {
     public GameObject frame;
     public GameObject player;
+
     public Canvas game;
     public Canvas options;
     public Canvas menu;
     public Canvas win;
-
-    public UnityEngine.UI.Button CCWButton;
-    public UnityEngine.UI.Button CWButton;
-    public UnityEngine.UI.Button freezeButton;
-
-    public UnityEngine.UI.Button menuButton;
-    public UnityEngine.UI.Button exitMenuButton;
-    public UnityEngine.UI.Button optionButton;
-    public UnityEngine.UI.Button exitOptionButton;
-
-    public UnityEngine.UI.Button nextLevelButton;
-    public UnityEngine.UI.Button exitToMainMenuButton;
     
     // Start is called before the first frame update
     void Start()
@@ -28,70 +17,30 @@ public class GameButtonManager : MonoBehaviour
         options.enabled = false;
         menu.enabled = false;
         win.enabled = false;
-
-        freezeButton.onClick.AddListener(delegate { SwitchButtonHandler(0); });
-        CWButton.onClick.AddListener(delegate { SwitchButtonHandler(1); });
-        CCWButton.onClick.AddListener(delegate { SwitchButtonHandler(2); });
-
-        menuButton.onClick.AddListener(delegate { SwitchButtonHandler(3); });
-        optionButton.onClick.AddListener(delegate { SwitchButtonHandler(4); });
-        exitMenuButton.onClick.AddListener(delegate { SwitchButtonHandler(5); });
-        exitOptionButton.onClick.AddListener(delegate { SwitchButtonHandler(5); });
-
-        nextLevelButton.onClick.AddListener(delegate { SwitchButtonHandler(6); });
-        exitToMainMenuButton.onClick.AddListener(delegate { SwitchButtonHandler(7); });
     }
 
-    void SwitchButtonHandler(int index)
+    public void Freeze()
     {
-        switch (index)
-        {
-            case 0:
-                //Debug.Log("Freeze");
-                (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
-                (frame.GetComponent("ConstantForce") as ConstantForce).enabled = false;
-                break;
-            case 1:
-                //Debug.Log("Rotate CW");
-                (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
-                (frame.GetComponent("ConstantForce") as ConstantForce).enabled = true;
-                (frame.GetComponent("ConstantForce") as ConstantForce).relativeTorque = new Vector3(0.0f, 0.0f, -10.0f);
-                break;
-            case 2:
-                //Debug.Log("Rotate CCW");
-                (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
-                (frame.GetComponent("ConstantForce") as ConstantForce).enabled = true;
-                (frame.GetComponent("ConstantForce") as ConstantForce).relativeTorque = new Vector3(0.0f, 0.0f, 10.0f);
-                break;
-            case 3:
-                //Debug.Log("Open Menu");
-                OpenMenu();
-                break;
-            case 4:
-                //Debug.Log("Open Options");
-                OpenOptions();
-                break;
-            case 5:
-                //Debug.Log("Exit Menu/Options");
-                ExitMenu();
-                break;
-            case 6:
-                //Debug.Log("Next level");
-                LevelManager.LoadNextLevel();
-                options.enabled = false;
-                menu.enabled = false;
-                win.enabled = false;
-                game.enabled = true;
-                break;
-            case 7:
-                //Debug.Log("exit to Main Menu");
-                LevelManager.currentLevel = 0;
-                LevelManager.Load(LevelManager.Scene.MainMenu);
-                break;
-        }
+        (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
+        (frame.GetComponent("ConstantForce") as ConstantForce).enabled = false;
     }
 
-    private void OpenMenu()
+    public void RotateCW()
+    {
+        (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
+        (frame.GetComponent("ConstantForce") as ConstantForce).enabled = true;
+        (frame.GetComponent("ConstantForce") as ConstantForce).relativeTorque = new Vector3(0.0f, 0.0f, -10.0f);
+    }
+
+    public void RotateCCW()
+    {
+        (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
+        (frame.GetComponent("ConstantForce") as ConstantForce).enabled = true;
+        (frame.GetComponent("ConstantForce") as ConstantForce).relativeTorque = new Vector3(0.0f, 0.0f, 10.0f);
+    }
+
+
+    public void OpenMenu()
     {
         (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
         (frame.GetComponent("ConstantForce") as ConstantForce).enabled = false;
@@ -101,7 +50,7 @@ public class GameButtonManager : MonoBehaviour
         options.enabled = false;
     }
 
-    private void OpenOptions()
+    public void OpenOptions()
     {
         (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
         (frame.GetComponent("ConstantForce") as ConstantForce).enabled = false;
@@ -111,7 +60,7 @@ public class GameButtonManager : MonoBehaviour
         options.enabled = true;
     }
 
-    private void ExitMenu()
+    public void ExitMenu()
     {
         (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
         (frame.GetComponent("ConstantForce") as ConstantForce).enabled = true;
@@ -119,6 +68,38 @@ public class GameButtonManager : MonoBehaviour
         game.enabled = true;
         menu.enabled = false;
         options.enabled = false;
+    }
+
+
+    public void LoadNextLevel()
+    {
+        LevelManager.LoadNextLevel();
+        options.enabled = false;
+        menu.enabled = false;
+        win.enabled = false;
+        game.enabled = true;
+    }
+
+    public void LoadMainMenu()
+    {
+        LevelManager.currentLevel = 0;
+        LevelManager.Load(LevelManager.Scene.MainMenu);
+    }
+
+    public void LoadLevelSelect()
+    {
+        LevelManager.currentLevel = 0;
+        LevelManager.Load(LevelManager.Scene.LevelSelect);
+    }
+
+    public void SetAudioLevel(int level)
+    {
+        Debug.Log(level);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
 }
