@@ -1,14 +1,11 @@
 using UnityEngine;
 
-public class EndScreenButtonManager : MonoBehaviour
-{
-    public void exit()
-    {
+public class EndScreenButtonManager : MonoBehaviour {
+    public void exit() {
         Application.Quit();
     }
 
-    public void mainMenu()
-    {
+    public void mainMenu() {
         LevelManager.Load(LevelManager.Scene.MainMenu);
     }
 }
