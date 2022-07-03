@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class EndSpaceCollider : MonoBehaviour
-{
+public class EndSpaceCollider : MonoBehaviour {
     public GameObject frame;
     public GameObject player;
 
@@ -9,13 +8,11 @@ public class EndSpaceCollider : MonoBehaviour
     public Canvas win;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         win.enabled = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
+    private void OnTriggerEnter(Collider other) {
         (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
         (frame.GetComponent("ConstantForce") as ConstantForce).enabled = false;
         (player.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;

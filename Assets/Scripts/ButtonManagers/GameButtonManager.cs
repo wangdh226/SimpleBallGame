@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class GameButtonManager : MonoBehaviour
-{
+public class GameButtonManager : MonoBehaviour {
     public GameObject frame;
     public GameObject player;
 
@@ -9,39 +8,34 @@ public class GameButtonManager : MonoBehaviour
     public Canvas options;
     public Canvas menu;
     public Canvas win;
-    
+
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         game.enabled = true;
         options.enabled = false;
         menu.enabled = false;
         win.enabled = false;
     }
 
-    public void Freeze()
-    {
+    public void Freeze() {
         (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
         (frame.GetComponent("ConstantForce") as ConstantForce).enabled = false;
     }
 
-    public void RotateCW()
-    {
+    public void RotateCW() {
         (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
         (frame.GetComponent("ConstantForce") as ConstantForce).enabled = true;
         (frame.GetComponent("ConstantForce") as ConstantForce).relativeTorque = new Vector3(0.0f, 0.0f, -10.0f);
     }
 
-    public void RotateCCW()
-    {
+    public void RotateCCW() {
         (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
         (frame.GetComponent("ConstantForce") as ConstantForce).enabled = true;
         (frame.GetComponent("ConstantForce") as ConstantForce).relativeTorque = new Vector3(0.0f, 0.0f, 10.0f);
     }
 
 
-    public void OpenMenu()
-    {
+    public void OpenMenu() {
         (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
         (frame.GetComponent("ConstantForce") as ConstantForce).enabled = false;
         (player.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
@@ -50,8 +44,7 @@ public class GameButtonManager : MonoBehaviour
         options.enabled = false;
     }
 
-    public void OpenOptions()
-    {
+    public void OpenOptions() {
         (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
         (frame.GetComponent("ConstantForce") as ConstantForce).enabled = false;
         (player.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
@@ -60,8 +53,7 @@ public class GameButtonManager : MonoBehaviour
         options.enabled = true;
     }
 
-    public void ExitMenu()
-    {
+    public void ExitMenu() {
         (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
         (frame.GetComponent("ConstantForce") as ConstantForce).enabled = true;
         (player.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
@@ -71,8 +63,7 @@ public class GameButtonManager : MonoBehaviour
     }
 
 
-    public void LoadNextLevel()
-    {
+    public void LoadNextLevel() {
         LevelManager.LoadNextLevel();
         options.enabled = false;
         menu.enabled = false;
@@ -80,25 +71,21 @@ public class GameButtonManager : MonoBehaviour
         game.enabled = true;
     }
 
-    public void LoadMainMenu()
-    {
+    public void LoadMainMenu() {
         LevelManager.currentLevel = 0;
         LevelManager.Load(LevelManager.Scene.MainMenu);
     }
 
-    public void LoadLevelSelect()
-    {
+    public void LoadLevelSelect() {
         LevelManager.currentLevel = 0;
         LevelManager.Load(LevelManager.Scene.LevelSelect);
     }
 
-    public void SetAudioLevel(int level)
-    {
+    public void SetAudioLevel(int level) {
         Debug.Log(level);
     }
 
-    public void ExitGame()
-    {
+    public void ExitGame() {
         Application.Quit();
     }
 
