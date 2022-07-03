@@ -9,60 +9,81 @@ public class GameButtonManager : MonoBehaviour {
     public Canvas menu;
     public Canvas win;
 
-    // Start is called before the first frame update
+    private Rigidbody frameRigidbody;
+    private ConstantForce frameConstantForce;
+    private Rigidbody playerRigidbody;
+
     void Start() {
         game.enabled = true;
         options.enabled = false;
         menu.enabled = false;
         win.enabled = false;
+
+        frameRigidbody = frame.GetComponent("Rigidbody") as Rigidbody;
+        frameConstantForce = frame.GetComponent("ConstantForce") as ConstantForce;
+        playerRigidbody = player.GetComponent("Rigidbody") as Rigidbody;
     }
 
+    /* Button functionality implementations
+     */
     public void Freeze() {
-        (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
-        (frame.GetComponent("ConstantForce") as ConstantForce).enabled = false;
+        frameRigidbody.isKinematic = true;
+        frameConstantForce.enabled = false;
     }
-
+    
     public void RotateCW() {
-        (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
-        (frame.GetComponent("ConstantForce") as ConstantForce).enabled = true;
-        (frame.GetComponent("ConstantForce") as ConstantForce).relativeTorque = new Vector3(0.0f, 0.0f, -10.0f);
+        frameRigidbody.isKinematic = false;
+        frameConstantForce.enabled = true;
+        frameConstantForce.relativeTorque = new Vector3(0.0f, 0.0f, -10.0f);
     }
-
+    
     public void RotateCCW() {
-        (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
-        (frame.GetComponent("ConstantForce") as ConstantForce).enabled = true;
-        (frame.GetComponent("ConstantForce") as ConstantForce).relativeTorque = new Vector3(0.0f, 0.0f, 10.0f);
+        frameRigidbody.isKinematic = false;
+        frameConstantForce.enabled = true;
+        frameConstantForce.relativeTorque = new Vector3(0.0f, 0.0f, 10.0f);
+    }
+    
+    public void SetAudioLevel(int level) {
+        Debug.Log(level);
+    }
+    
+    public void ExitGame() {
+        Application.Quit();
     }
 
-
+    /* Methods for opening/closing menus
+     */
+    
     public void OpenMenu() {
-        (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
-        (frame.GetComponent("ConstantForce") as ConstantForce).enabled = false;
-        (player.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
+        frameRigidbody.isKinematic = true;
+        frameConstantForce.enabled = false;
+        playerRigidbody.isKinematic = true;
         game.enabled = false;
         menu.enabled = true;
         options.enabled = false;
     }
-
+    
     public void OpenOptions() {
-        (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
-        (frame.GetComponent("ConstantForce") as ConstantForce).enabled = false;
-        (player.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
+        frameRigidbody.isKinematic = true;
+        frameConstantForce.enabled = false;
+        playerRigidbody.isKinematic = true;
         game.enabled = false;
         menu.enabled = false;
         options.enabled = true;
     }
-
+    
     public void ExitMenu() {
-        (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
-        (frame.GetComponent("ConstantForce") as ConstantForce).enabled = true;
-        (player.GetComponent("Rigidbody") as Rigidbody).isKinematic = false;
+        frameRigidbody.isKinematic = false;
+        frameConstantForce.enabled = true;
+        playerRigidbody.isKinematic = false;
         game.enabled = true;
         menu.enabled = false;
         options.enabled = false;
     }
 
-
+    /* Methods for loading other scenes
+     */
+    
     public void LoadNextLevel() {
         LevelManager.LoadNextLevel();
         options.enabled = false;
@@ -70,23 +91,14 @@ public class GameButtonManager : MonoBehaviour {
         win.enabled = false;
         game.enabled = true;
     }
-
+    
     public void LoadMainMenu() {
         LevelManager.currentLevel = 0;
         LevelManager.Load(LevelManager.Scene.MainMenu);
     }
-
+    
     public void LoadLevelSelect() {
         LevelManager.currentLevel = 0;
         LevelManager.Load(LevelManager.Scene.LevelSelect);
     }
-
-    public void SetAudioLevel(int level) {
-        Debug.Log(level);
-    }
-
-    public void ExitGame() {
-        Application.Quit();
-    }
-
 }

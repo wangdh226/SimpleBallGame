@@ -11,9 +11,9 @@ public class AudioManager : MonoBehaviour {
 
     public static AudioManager instance;
 
-    // Start is called before the first frame update
     void Awake() {
-        if(instance == null) {
+        if (instance == null) {
+            // if the AudioManager does not exist, create one and associate components
             instance = this;
             DontDestroyOnLoad(gameObject);
 
@@ -25,6 +25,8 @@ public class AudioManager : MonoBehaviour {
                 s.source.loop = s.loop;
             }
         } else {
+            // if the AudioManager already exists, destroy the new instance
+            //   only used if loading AudioManager in multiple scenes i think
             Destroy(gameObject);
         }
     }
@@ -35,22 +37,21 @@ public class AudioManager : MonoBehaviour {
 
     public void Play(string name) {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        if(s == null) {
+        if (s != null) {
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+            s.source.Play();
+        } else {
             Debug.LogWarning("Sound: " + name + " not found");
-            return;
         }
-        s.source.volume = s.volume;
-        s.source.pitch = s.pitch;
-        s.source.Play();
     }
 
     public void Stop(string name) {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s == null) {
+        if (s != null) {
+            s.source.Stop();
+        } else {
             Debug.LogWarning("Sound: " + name + " not found");
-            return;
         }
-        s.source.Stop();
     }
-
 }
