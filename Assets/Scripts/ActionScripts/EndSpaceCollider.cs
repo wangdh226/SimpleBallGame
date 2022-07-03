@@ -13,6 +13,8 @@ public class EndSpaceCollider : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
+        FindObjectOfType<AudioManager>().Play("Win");
+
         (frame.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
         (frame.GetComponent("ConstantForce") as ConstantForce).enabled = false;
         (player.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
