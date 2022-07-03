@@ -53,7 +53,6 @@ public class GameButtonManager : MonoBehaviour {
 
     /* Methods for opening/closing menus
      */
-    
     public void OpenMenu() {
         frameRigidbody.isKinematic = true;
         frameConstantForce.enabled = false;
@@ -83,7 +82,6 @@ public class GameButtonManager : MonoBehaviour {
 
     /* Methods for loading other scenes
      */
-    
     public void LoadNextLevel() {
         LevelManager.LoadNextLevel();
         options.enabled = false;
