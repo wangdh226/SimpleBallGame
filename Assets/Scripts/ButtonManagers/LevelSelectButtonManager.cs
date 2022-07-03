@@ -5,11 +5,11 @@ public class LevelSelectButtonManager : MonoBehaviour {
         LevelManager.Load(levelNum);
     }
 
-    public void back() {
+    public void Back() {
         LevelManager.Load(LevelManager.Scene.MainMenu);
     }
 
-    public void play() {
+    public void Play() {
         LevelManager.Load(1);
     }
 }

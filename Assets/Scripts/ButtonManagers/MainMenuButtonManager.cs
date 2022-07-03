@@ -4,7 +4,6 @@ public class MainMenuButtonManager : MonoBehaviour {
     public Canvas mainMenu;
     public Canvas options;
 
-    // Start is called before the first frame update
     void Start() {
         LevelManager.currentLevel = 0;
         mainMenu.enabled = true;

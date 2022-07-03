@@ -7,7 +7,6 @@ public class EndSpaceCollider : MonoBehaviour {
     public Canvas game;
     public Canvas win;
 
-    // Start is called before the first frame update
     void Start() {
         win.enabled = false;
     }
