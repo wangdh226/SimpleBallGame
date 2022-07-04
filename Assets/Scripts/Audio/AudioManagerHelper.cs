@@ -35,6 +35,7 @@ public class AudioManagerHelper : MonoBehaviour
 
     public void Mute(string name) {
         am.Mute(name);
+        instantiateSlider(name);
     }
 
     public void VolumeBGM(float volume) {
