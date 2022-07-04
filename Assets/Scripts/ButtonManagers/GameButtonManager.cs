@@ -43,14 +43,6 @@ public class GameButtonManager : MonoBehaviour {
         frameConstantForce.relativeTorque = new Vector3(0.0f, 0.0f, 10.0f);
     }
     
-    public void SetAudioLevel(int level) {
-        Debug.Log(level);
-    }
-    
-    public void ExitGame() {
-        Application.Quit();
-    }
-
     /* Methods for opening/closing menus
      */
     public void OpenMenu() {
@@ -78,25 +70,5 @@ public class GameButtonManager : MonoBehaviour {
         game.enabled = true;
         menu.enabled = false;
         options.enabled = false;
-    }
-
-    /* Methods for loading other scenes
-     */
-    public void LoadNextLevel() {
-        LevelManager.LoadNextLevel();
-        options.enabled = false;
-        menu.enabled = false;
-        win.enabled = false;
-        game.enabled = true;
-    }
-    
-    public void LoadMainMenu() {
-        LevelManager.currentLevel = 0;
-        LevelManager.Load(LevelManager.Scene.MainMenu);
-    }
-    
-    public void LoadLevelSelect() {
-        LevelManager.currentLevel = 0;
-        LevelManager.Load(LevelManager.Scene.LevelSelect);
     }
 }

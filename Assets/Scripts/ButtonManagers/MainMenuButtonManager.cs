@@ -10,10 +10,6 @@ public class MainMenuButtonManager : MonoBehaviour {
         options.enabled = false;
     }
 
-    public void ExitGame() {
-        Application.Quit();
-    }
-
     public void OpenOptions() {
         mainMenu.enabled = false;
         options.enabled = true;
@@ -22,17 +18,5 @@ public class MainMenuButtonManager : MonoBehaviour {
     public void ExitMenu() {
         mainMenu.enabled = true;
         options.enabled = false;
-    }
-
-    public void LoadFirstLevel() {
-        LevelManager.Load(1);
-    }
-
-    public void LoadLevelSelector() {
-        LevelManager.Load(LevelManager.Scene.LevelSelect);
-    }
-
-    public void SetAudioLevel(int level) {
-        Debug.Log(level);
     }
 }
