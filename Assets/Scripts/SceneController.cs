@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour {
 
-    public Animator transition;
+    private Animator transition;
     public float transitionTime = 1f;
+
+    private void Awake() {
+        transition = GameObject.Find("CrossFade").GetComponent<Animator>();
+    }
 
     private void trigger() {
         StartCoroutine(triggerSceneFade());

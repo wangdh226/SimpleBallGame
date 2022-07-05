@@ -4,10 +4,14 @@ public class EndSpaceTrigger : MonoBehaviour {
     public GameObject gameArea;
     public GameObject player;
 
-    public Canvas game;
-    public Canvas win;
+    private Canvas game;
+    private Canvas win;
 
     void Start() {
+        game = GameObject.Find("Canvas - Game").GetComponent<Canvas>();
+        win = GameObject.Find("Canvas - Win").GetComponent<Canvas>();
+
+        game.enabled = true;
         win.enabled = false;
     }
 

@@ -1,15 +1,14 @@
 using UnityEngine;
 
 public class GameButtonManager : MonoBehaviour {
-    public GameObject player;
-    public GameObject gameArea;
-
     public Canvas game;
     public Canvas options;
     public Canvas menu;
 
     private const float force = 10f;
 
+    private GameObject player;
+    private GameObject gameArea;
     private Rigidbody gameAreaRigidbody;
     private ConstantForce gameAreaConstantForce;
     private Rigidbody playerRigidbody;
@@ -17,6 +16,8 @@ public class GameButtonManager : MonoBehaviour {
 
     void Start() {
         // Instantiate private variables for use in other methods
+        player = GameObject.Find("Player");
+        gameArea = GameObject.Find("GameArea");
         playerRigidbody = player.GetComponent("Rigidbody") as Rigidbody;
         gameAreaRigidbody = gameArea.GetComponent("Rigidbody") as Rigidbody;
         gameAreaConstantForce = gameArea.GetComponent("ConstantForce") as ConstantForce;
