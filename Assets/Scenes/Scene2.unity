@@ -275,7 +275,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneController
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2022266998283126229, guid: 2f4700370e1ac3c42bb473557ad0eef1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2f4700370e1ac3c42bb473557ad0eef1, type: 3}
 --- !u!95 &503340209 stripped
 Animator:
