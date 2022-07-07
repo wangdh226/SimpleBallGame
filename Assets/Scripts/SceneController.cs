@@ -9,7 +9,7 @@ public class SceneController : MonoBehaviour {
     public float transitionTime = 1f;
 
     private void Awake() {
-        transition = GameObject.Find("CrossFade").GetComponent<Animator>();
+        transition = GameObject.Find("Crossfade").GetComponent<Animator>();
     }
 
     private void trigger() {
