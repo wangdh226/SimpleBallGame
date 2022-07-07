@@ -33,6 +33,11 @@ public class SceneController : MonoBehaviour {
         LevelManager.Load(levelNum);
     }
 
+    public void ReloadLevel() {
+        trigger();
+        LevelManager.Load(LevelManager.currentLevel);
+    }
+
     public void LoadNextLevel() {
         trigger();
         LevelManager.LoadNextLevel();
@@ -53,4 +58,6 @@ public class SceneController : MonoBehaviour {
     public void ExitGame() {
         Application.Quit();
     }
+
+
 }
