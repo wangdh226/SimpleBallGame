@@ -9,6 +9,7 @@ public class GameButtonManager : MonoBehaviour {
 
     private GameObject player;
     private GameObject gameArea;
+
     private Rigidbody gameAreaRigidbody;
     private ConstantForce gameAreaConstantForce;
     private Rigidbody playerRigidbody;
@@ -18,9 +19,9 @@ public class GameButtonManager : MonoBehaviour {
         // Instantiate private variables for use in other methods
         player = GameObject.Find("Player");
         gameArea = GameObject.Find("GameArea");
-        playerRigidbody = player.GetComponent("Rigidbody") as Rigidbody;
-        gameAreaRigidbody = gameArea.GetComponent("Rigidbody") as Rigidbody;
-        gameAreaConstantForce = gameArea.GetComponent("ConstantForce") as ConstantForce;
+        playerRigidbody = player.GetComponent<Rigidbody>() as Rigidbody;
+        gameAreaRigidbody = gameArea.GetComponent<Rigidbody>() as Rigidbody;
+        gameAreaConstantForce = gameArea.GetComponent<ConstantForce>() as ConstantForce;
         
         // Setup gameArea start state
         gameAreaRigidbody.isKinematic = true;

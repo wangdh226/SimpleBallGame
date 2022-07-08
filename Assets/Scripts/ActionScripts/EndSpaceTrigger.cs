@@ -19,9 +19,9 @@ public class EndSpaceTrigger : MonoBehaviour {
         if(other.gameObject == player) {
             FindObjectOfType<AudioManager>().Play("SFX_Win");
 
-            (gameArea.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
-            (gameArea.GetComponent("ConstantForce") as ConstantForce).enabled = false;
-            (player.GetComponent("Rigidbody") as Rigidbody).isKinematic = true;
+            (gameArea.GetComponent<Rigidbody>() as Rigidbody).isKinematic = true;
+            (gameArea.GetComponent<ConstantForce>() as ConstantForce).enabled = false;
+            (player.GetComponent<Rigidbody>() as Rigidbody).isKinematic = true;
 
             game.enabled = false;
             win.enabled = true;
