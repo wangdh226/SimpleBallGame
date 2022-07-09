@@ -18,3 +18,17 @@ Major things I learned -
   Figured out some animation/animator stuff
   
 
+Focuses 
+Main Menu - scene transitions, audio manager, audio controllers
+Level Select - Grid button layout, button prefab w/ levels, setup level manager
+End Screen - Setup how to get to end screen, maybe external links(to github?)
+Level 1 - Setup basic frame, player mechanics(player obj, rotation), level finish screen/animation
+Level 2 - Setup some basic obstacles that work with frame
+Level 3 - Setup moving obstacles that work with frame
+Level 4 - Setup rotating obstacles w/ frame, update project structure to help
+Level 5 - Setup stationary platforms w/o frame, make conditional 'transient' blocks
+Level 6 - Make use of 360deg rotating frame to use gravity
+Level 7 - Use all mechanics from previous levels - final level(for now..?)
+
+
+
