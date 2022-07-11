@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour {
 
-    public Animator transition;
+    private Animator transition;
     public float transitionTime = 1f;
+
+    private void Awake() {
+        transition = GameObject.Find("Crossfade").GetComponent<Animator>();
+    }
 
     private void trigger() {
         StartCoroutine(triggerSceneFade());
@@ -27,6 +31,11 @@ public class SceneController : MonoBehaviour {
     public void LoadLevel(int levelNum) {
         trigger();
         LevelManager.Load(levelNum);
+    }
+
+    public void ReloadLevel() {
+        trigger();
+        LevelManager.Load(LevelManager.currentLevel);
     }
 
     public void LoadNextLevel() {

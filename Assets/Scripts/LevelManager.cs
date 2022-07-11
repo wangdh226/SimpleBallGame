@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public static class LevelManager {
     public static int currentLevel = 0;
-    public const int finalLevel = 5;
+    public const int finalLevel = 6;
+
     public enum Scene {
         LevelSelect, MainMenu, EndScreen
     }

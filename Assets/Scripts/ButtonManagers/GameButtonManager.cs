@@ -1,53 +1,62 @@
 using UnityEngine;
 
 public class GameButtonManager : MonoBehaviour {
-    public GameObject frame;
-    public GameObject player;
-
     public Canvas game;
     public Canvas options;
     public Canvas menu;
-    public Canvas win;
 
-    private Rigidbody frameRigidbody;
-    private ConstantForce frameConstantForce;
+    private const float force = 10f;
+
+    private GameObject player;
+    private GameObject gameArea;
+
+    private Rigidbody gameAreaRigidbody;
+    private ConstantForce gameAreaConstantForce;
     private Rigidbody playerRigidbody;
 
+
     void Start() {
+        // Instantiate private variables for use in other methods
+        player = GameObject.Find("Player");
+        gameArea = GameObject.Find("GameArea");
+        playerRigidbody = player.GetComponent<Rigidbody>() as Rigidbody;
+        gameAreaRigidbody = gameArea.GetComponent<Rigidbody>() as Rigidbody;
+        gameAreaConstantForce = gameArea.GetComponent<ConstantForce>() as ConstantForce;
+        
+        // Setup gameArea start state
+        gameAreaRigidbody.isKinematic = true;
+        gameAreaConstantForce.enabled = false;
+
+        // Setup canvas start state
         game.enabled = true;
         options.enabled = false;
         menu.enabled = false;
-        win.enabled = false;
-
-        frameRigidbody = frame.GetComponent("Rigidbody") as Rigidbody;
-        frameConstantForce = frame.GetComponent("ConstantForce") as ConstantForce;
-        playerRigidbody = player.GetComponent("Rigidbody") as Rigidbody;
     }
 
     /* Button functionality implementations
      */
     public void Freeze() {
-        frameRigidbody.isKinematic = true;
-        frameConstantForce.enabled = false;
+        gameAreaRigidbody.isKinematic = true;
+        gameAreaConstantForce.enabled = false;
     }
     
     public void RotateCW() {
-        frameRigidbody.isKinematic = false;
-        frameConstantForce.enabled = true;
-        frameConstantForce.relativeTorque = new Vector3(0.0f, 0.0f, -10.0f);
+        gameAreaRigidbody.isKinematic = false;
+        gameAreaConstantForce.enabled = true;
+        gameAreaConstantForce.relativeTorque = new Vector3(0.0f, 0.0f, -force);
     }
-    
+
     public void RotateCCW() {
-        frameRigidbody.isKinematic = false;
-        frameConstantForce.enabled = true;
-        frameConstantForce.relativeTorque = new Vector3(0.0f, 0.0f, 10.0f);
+        gameAreaRigidbody.isKinematic = false;
+        gameAreaConstantForce.enabled = true;
+        gameAreaConstantForce.relativeTorque = new Vector3(0.0f, 0.0f, force);
     }
     
     /* Methods for opening/closing menus
      */
     public void OpenMenu() {
-        frameRigidbody.isKinematic = true;
-        frameConstantForce.enabled = false;
+        gameAreaRigidbody.isKinematic = true;
+        gameAreaConstantForce.enabled = false;
         playerRigidbody.isKinematic = true;
         game.enabled = false;
         menu.enabled = true;
@@ -55,8 +64,8 @@ public class GameButtonManager : MonoBehaviour {
     }
     
     public void OpenOptions() {
-        frameRigidbody.isKinematic = true;
-        frameConstantForce.enabled = false;
+        gameAreaRigidbody.isKinematic = true;
+        gameAreaConstantForce.enabled = false;
         playerRigidbody.isKinematic = true;
         game.enabled = false;
         menu.enabled = false;
@@ -64,8 +73,8 @@ public class GameButtonManager : MonoBehaviour {
     }
     
     public void ExitMenu() {
-        frameRigidbody.isKinematic = false;
-        frameConstantForce.enabled = true;
+        gameAreaRigidbody.isKinematic = false;
+        gameAreaConstantForce.enabled = true;
         playerRigidbody.isKinematic = false;
         game.enabled = true;
         menu.enabled = false;
