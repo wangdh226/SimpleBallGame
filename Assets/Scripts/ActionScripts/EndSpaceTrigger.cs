@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EndSpaceTrigger : MonoBehaviour {
@@ -16,15 +17,18 @@ public class EndSpaceTrigger : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject == player) {
-            FindObjectOfType<AudioManager>().Play("SFX_Win");
-
+        if (other.gameObject == player) {
             (gameArea.GetComponent<Rigidbody>() as Rigidbody).isKinematic = true;
             (gameArea.GetComponent<ConstantForce>() as ConstantForce).enabled = false;
             (player.GetComponent<Rigidbody>() as Rigidbody).isKinematic = true;
 
             game.enabled = false;
             win.enabled = true;
+            try {
+                FindObjectOfType<AudioManager>().Play("SFX_Win");
+            } catch (Exception e) {
+                Debug.Log("could not find Audiomanager - " + e.ToString());
+            }
         }
     }
 }
