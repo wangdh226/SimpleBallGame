@@ -10,7 +10,6 @@ public class PlayerCollide : MonoBehaviour
     private BoxCollider boxTrigger;
     private Renderer boxRenderer;
     
-    
     void Start()
     {
         player = GameObject.Find("Player");

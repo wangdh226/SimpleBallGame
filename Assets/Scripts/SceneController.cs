@@ -58,6 +58,4 @@ public class SceneController : MonoBehaviour {
     public void ExitGame() {
         Application.Quit();
     }
-
-
 }
